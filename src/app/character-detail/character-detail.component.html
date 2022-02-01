@@ -1,0 +1,20 @@
+<h2>Modify character:</h2>
+<div id="card">
+  <h3>Character: {{ selectedCharacter.name }}</h3>
+  <h5>{{ selectedCharacter.title }}</h5>
+  <p>active: {{ selectedCharacter.active }}</p>
+  <label for="newName">name:</label>
+  <input type="text" [(ngModel)]="newName" id="newName" />
+  <br />
+  <label for="newTitle">title:</label>
+  <input type="text" [(ngModel)]="newTitle" id="newTitle" />
+  <br />
+  <label for="newStatut">statut:</label>
+  <select formControlName="active">
+    <option *ngFor="let statut of statuts" [ngValue]="statut">
+      {{ statut.id }}
+    </option>
+  </select>
+  <br />
+  <button (click)="update()">update</button>
+</div>

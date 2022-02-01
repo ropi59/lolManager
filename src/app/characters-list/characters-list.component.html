@@ -1,0 +1,59 @@
+<h1>{{ title }}</h1>
+<div id="container">
+  <div id="red-card">
+    <h2>Add character:</h2>
+    <form (submit)="create()" [formGroup]="characterForm">
+      <label for="name">name:</label>
+      <input type="text" formControlName="name" id="name" />
+      <br />
+      <label for="title">title:</label>
+      <input type="text" formControlName="title" id="title" />
+      <br />
+      <label for="statut">statut:</label>
+      <select formControlName="statut" id="statut">
+        <option *ngFor="let statut of statuts" [ngValue]="statut">
+          {{ statut.id }}
+        </option>
+      </select>
+      <br />
+      <button type="submit">create</button>
+    </form>
+  </div>
+  <div *ngIf="selectedCharacter">
+    <app-character-detail
+      [selectedCharacter]="selectedCharacter"
+      [id]="selectedCharacter.id"
+      [newName]="selectedCharacter.name"
+      [newStatut]="selectedCharacter.active"
+      (characterModified)="onManage($event)"
+    ></app-character-detail>
+  </div>
+</div>
+<div id="global-container">
+  <div id="left-container">
+    <h2>Active Characters</h2>
+    <div *ngFor="let character of charactersList">
+      <div id="card" *ngIf="character.active === true">
+        <h3>{{ character.name }}</h3>
+        <button (click)="delete(character)">X</button>
+        <button (click)="selectCharacter(character)">See Character</button>
+        <hr />
+        <p>"{{ character.title }}"</p>
+        <p>Statut: {{ character.active }}</p>
+      </div>
+    </div>
+  </div>
+  <div id="right-container">
+    <h2>Inactive Characters</h2>
+    <div *ngFor="let character of charactersList">
+      <div id="card" *ngIf="character.active === false">
+        <h3>{{ character.name }}</h3>
+        <button (click)="delete(character)">X</button>
+        <button (click)="selectCharacter(character)">See Character</button>
+        <hr />
+        <p>"{{ character.title }}"</p>
+        <p>Statut: {{ character.active }}</p>
+      </div>
+    </div>
+  </div>
+</div>

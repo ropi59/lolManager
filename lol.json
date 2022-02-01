@@ -965,6 +965,22 @@
       "key": "Ezreal",
       "name": "Ezreal",
       "active": true
+    },
+    {
+      "name": "toto",
+      "title": "totokiller",
+      "statut": {
+        "name": "true",
+        "id": "active",
+        "value": true
+      },
+      "id": 520
+    },
+    {
+      "name": "toto",
+      "title": "totokiller",
+      "active": null,
+      "id": 522
     }
   ]
 }

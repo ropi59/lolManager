@@ -1,7 +1,7 @@
-export interface Characters {
+export interface Character {
   id: number;
   name: string;
   title: string;
-  key: string;
+  key?: string;
   active: boolean;
 }
